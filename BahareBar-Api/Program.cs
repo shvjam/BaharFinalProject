@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<BahareBar_Api.Services.ISeedService, BahareBar_Api.Services.SeedService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

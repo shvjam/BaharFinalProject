@@ -64,3 +64,10 @@ TestResults/
 # Code Analysis
 *.sarif
 *.codeanalysis.sarif.json
+
+# Local database files
+*.mdf
+*.ldf
+*.db
+*.db-shm
+*.db-wal

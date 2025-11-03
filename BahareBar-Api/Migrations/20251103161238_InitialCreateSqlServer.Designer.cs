@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BahareBar_Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251103150457_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251103161238_InitialCreateSqlServer")]
+    partial class InitialCreateSqlServer
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
