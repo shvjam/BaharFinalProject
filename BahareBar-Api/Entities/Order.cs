@@ -14,6 +14,7 @@ public class Order : AuditableEntity
     public User? Driver { get; set; }
 
     public OrderStatus Status { get; set; }
+    public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 
     // Address Info
     public string OriginAddress { get; set; }
@@ -21,11 +22,7 @@ public class Order : AuditableEntity
 
     // Pricing Info
     [Column(TypeName = "decimal(18, 2)")]
-    public decimal EstimatedServiceItemCost { get; set; }
-    [Column(TypeName = "decimal(18, 2)")]
-    public decimal PhysicalProductCost { get; set; }
-    [Column(TypeName = "decimal(18, 2)")]
-    public decimal TotalEstimatedCost { get; set; }
+    public decimal TotalPrice { get; set; }
 
     // Navigation Properties
     public ICollection<OrderServiceItem> OrderServiceItems { get; set; } = new List<OrderServiceItem>();

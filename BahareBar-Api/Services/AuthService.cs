@@ -79,13 +79,21 @@ public class AuthService : IAuthService
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        var claims = new[]
+        var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.MobilePhone, user.PhoneNumber),
-            new Claim(ClaimTypes.Role, user.Role.ToString())
+            new Claim(ClaimTypes.MobilePhone, user.PhoneNumber)
         };
+
+        if (user.Role == UserRole.Admin)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        }
+        else
+        {
+            claims.Add(new Claim(ClaimTypes.Role, user.Role.ToString()));
+        }
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
